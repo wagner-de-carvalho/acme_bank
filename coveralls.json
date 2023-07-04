@@ -1,0 +1,13 @@
+{
+    "skip_files": [
+        "test/support/data_case.ex",
+        "lib/acme_bank/application.ex",
+        "lib/acme_bank_web/telemetry.ex",
+        "lib/acme_bank_web/router.ex",
+        "lib/acme_bank_web/controllers/welcome_controller.ex"
+    ],
+    "coverage_options": {
+        "treat_no_relevant_lines_as_covered": true,
+        "minimum_coverage": 10
+    }
+}
