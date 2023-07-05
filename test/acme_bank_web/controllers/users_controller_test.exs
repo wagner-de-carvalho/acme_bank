@@ -3,8 +3,8 @@ defmodule AcmeBankWeb.UsersControllerTest do
   alias AcmeBank.Users
 
   setup do
-    user_params = %{name: "Acme Test", email: "acmetest@mail.com", password: "123456", cep: "12345678"}
-    user_invalid_params = %{name: "Acme Test", email: "acmetest", password: "123456", cep: "1234567"}
+    user_params = %{"name" => "Acme Test", "email" => "acmetest@mail.com", "password" => "123456", "cep" => "29560000"}
+    user_invalid_params = %{"name" => "Acme Test", "email" => "acmetest", "password" => "123456", "cep" => "1234567"}
     %{user_params: user_params, user_invalid_params: user_invalid_params}
   end
 
@@ -16,7 +16,7 @@ defmodule AcmeBankWeb.UsersControllerTest do
         |> json_response(:created)
 
       assert response == %{
-               "data" => %{"cep" => "12345678", "email" => "acmetest@mail.com", "name" => "Acme Test"},
+               "data" => %{"cep" => "29560000", "email" => "acmetest@mail.com", "name" => "Acme Test"},
                "message" => "User created"
              }
     end
@@ -27,7 +27,7 @@ defmodule AcmeBankWeb.UsersControllerTest do
         |> post(~p"/api/users", params)
         |> json_response(:bad_request)
 
-      assert response == %{"errors" => %{"cep" => ["should be 8 character(s)"], "email" => ["has invalid format"]}}
+      assert response == %{"status" => "bad_request"}
     end
   end
 

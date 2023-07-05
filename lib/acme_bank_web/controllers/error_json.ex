@@ -14,6 +14,7 @@ defmodule AcmeBankWeb.ErrorJSON do
     %{errors: %{detail: Phoenix.Controller.status_message_from_template(template)}}
   end
 
+  def error(%{status: :bad_request}), do: %{status: :bad_request}
   def error(%{status: :not_found}), do: %{status: :not_found, message: "User not found"}
 
   def error(%{changeset: changeset}) do
