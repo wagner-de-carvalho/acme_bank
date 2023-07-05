@@ -1,7 +1,7 @@
 defmodule AcmeBankWeb.UsersController do
   use AcmeBankWeb, :controller
-  alias AcmeBankWeb.FallbackController
   alias AcmeBank.Users
+  alias AcmeBankWeb.FallbackController
   alias Users.User
 
   action_fallback FallbackController

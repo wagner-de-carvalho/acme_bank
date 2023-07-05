@@ -1,6 +1,6 @@
 defmodule AcmeBank.Users.Update do
-  alias AcmeBank.Users.User
   alias AcmeBank.Repo
+  alias AcmeBank.Users.User
 
   def call(%{"id" => id} = params) do
     case Repo.get(User, id) do
