@@ -1,7 +1,8 @@
 defmodule AcmeBankWeb.UsersController do
   use AcmeBankWeb, :controller
   alias AcmeBankWeb.FallbackController
-  alias AcmeBank.{Users, Users.User}
+  alias AcmeBank.Users
+  alias Users.User
 
   action_fallback FallbackController
 
@@ -18,6 +19,14 @@ defmodule AcmeBankWeb.UsersController do
       conn
       |> put_status(:ok)
       |> render(:get, user: user)
+    end
+  end
+
+  def update(conn, params) do
+    with {:ok, %User{} = user} <- Users.update(params) do
+      conn
+      |> put_status(:ok)
+      |> render(:update, user: user)
     end
   end
 end

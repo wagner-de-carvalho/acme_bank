@@ -10,5 +10,7 @@ defmodule AcmeBankWeb.UsersJSON do
 
   def get(%{user: user}), do: %{data: data(user)}
 
+  def update(%{user: user}), do: %{data: data(user), message: "User updated"}
+
   defp data(%User{} = user), do: user
 end
