@@ -52,7 +52,8 @@ defmodule AcmeBank.MixProject do
       {:tesla, "~> 1.4"},
       {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
       {:excoveralls, "~> 0.10", only: :test},
-      {:dialyxir, "~> 1.0", only: [:dev, :test], runtime: false}
+      {:dialyxir, "~> 1.0", only: [:dev, :test], runtime: false},
+      {:bypass, "~> 2.1", only: :test}
     ]
   end
 
