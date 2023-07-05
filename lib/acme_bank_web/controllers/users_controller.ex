@@ -14,6 +14,14 @@ defmodule AcmeBankWeb.UsersController do
     end
   end
 
+  def delete(conn, %{"id" => id} = _params) do
+    with {:ok, %User{} = _user} <- Users.delete(id) do
+      conn
+      |> put_status(:no_content)
+      |> send_resp(:no_content, "")
+    end
+  end
+
   def show(conn, %{"id" => id}) do
     with {:ok, %User{} = user} <- Users.get(id) do
       conn

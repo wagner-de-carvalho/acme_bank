@@ -18,7 +18,11 @@ defmodule AcmeBank.Users.User do
     timestamps()
   end
 
-  def changeset(user \\ %__MODULE__{}, params) do
+  def changeset(params) do
+    changeset(%__MODULE__{}, params)
+  end
+
+  def changeset(user, params) do
     user
     |> cast(params, @fields)
     |> validate_required(@required)
