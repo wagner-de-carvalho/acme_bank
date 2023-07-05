@@ -6,6 +6,8 @@ defmodule AcmeBank.Users.User do
   @fields [:name, :password, :email, :cep]
   @required @fields
 
+  @derive {Jason.Encoder, only: @fields -- [:password]}
+
   schema "users" do
     field :name, :string
     field :password, :string, virtual: true
