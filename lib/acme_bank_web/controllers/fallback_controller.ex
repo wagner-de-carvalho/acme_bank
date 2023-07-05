@@ -16,9 +16,14 @@ defmodule AcmeBankWeb.FallbackController do
     |> render(:error, status: :bad_request)
   end
 
-  def call(conn, {:error, changeset}) do
-    IO.inspect(changeset, label: "ERROR ===> ")
+  def call(conn, {:error, status}) when is_atom(status) do
+    conn
+    |> put_status(status)
+    |> put_view(json: ErrorJSON)
+    |> render(:error, status: status)
+  end
 
+  def call(conn, {:error, changeset}) do
     conn
     |> put_status(:bad_request)
     |> put_view(json: ErrorJSON)

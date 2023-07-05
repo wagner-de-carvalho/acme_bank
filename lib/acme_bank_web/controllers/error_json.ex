@@ -16,6 +16,7 @@ defmodule AcmeBankWeb.ErrorJSON do
 
   def error(%{status: :bad_request}), do: %{status: :bad_request}
   def error(%{status: :not_found}), do: %{status: :not_found, message: "User not found"}
+  def error(%{status: status}), do: %{status: status}
 
   def error(%{changeset: changeset}) do
     %{
