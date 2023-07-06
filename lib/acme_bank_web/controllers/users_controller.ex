@@ -2,6 +2,7 @@ defmodule AcmeBankWeb.UsersController do
   use AcmeBankWeb, :controller
   alias AcmeBank.Users
   alias AcmeBankWeb.FallbackController
+  alias AcmeBankWeb.Token
   alias Users.User
 
   action_fallback FallbackController
@@ -19,6 +20,16 @@ defmodule AcmeBankWeb.UsersController do
       conn
       |> put_status(:no_content)
       |> send_resp(:no_content, "")
+    end
+  end
+
+  def login(conn, params) do
+    with {:ok, user} <- Users.login(params) do
+      token = Token.sign(user)
+
+      conn
+      |> put_status(:ok)
+      |> render(:login, token: token)
     end
   end
 

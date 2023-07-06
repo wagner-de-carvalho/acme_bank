@@ -11,7 +11,9 @@ defmodule AcmeBankWeb.Router do
     get "/welcome", WelcomeController, :index
     post "/accounts", AccountsController, :create
     post "/accounts/transaction", AccountsController, :transaction
+
     resources "/users", UsersController, only: [:create, :delete, :show, :update]
+    post "/users/login", UsersController, :login
   end
 
   # Enable LiveDashboard in development

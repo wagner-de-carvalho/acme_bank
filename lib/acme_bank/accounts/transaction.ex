@@ -1,6 +1,5 @@
 defmodule AcmeBank.Accounts.Transaction do
-  alias AcmeBank.Accounts
-  alias Accounts.Account
+  alias AcmeBank.Accounts.Account
   alias AcmeBank.Repo
   alias Ecto.Multi
 

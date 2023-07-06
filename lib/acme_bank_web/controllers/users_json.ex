@@ -9,6 +9,7 @@ defmodule AcmeBankWeb.UsersJSON do
   end
 
   def get(%{user: user}), do: %{data: data(user)}
+  def login(%{token: token}), do: %{message: "Authenticated", bearer: token}
 
   def update(%{user: user}), do: %{data: data(user), message: "User updated"}
 
