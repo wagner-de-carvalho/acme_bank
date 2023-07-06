@@ -1,19 +1,31 @@
 defmodule AcmeBankWeb.Router do
   use AcmeBankWeb, :router
+  alias AcmeBankWeb.Plugs.Auth
 
   pipeline :api do
     plug :accepts, ["json"]
   end
 
+  pipeline :auth do
+    plug Auth
+  end
+
   scope "/api", AcmeBankWeb do
     pipe_through :api
 
-    get "/welcome", WelcomeController, :index
+    get "/", WelcomeController, :index
+
+    post "/users", UsersController, :create
+    post "/users/login", UsersController, :login
+  end
+
+  scope "/api", AcmeBankWeb do
+    pipe_through [:api, :auth]
+
+    resources "/users", UsersController, only: [:delete, :show, :update]
+
     post "/accounts", AccountsController, :create
     post "/accounts/transaction", AccountsController, :transaction
-
-    resources "/users", UsersController, only: [:create, :delete, :show, :update]
-    post "/users/login", UsersController, :login
   end
 
   # Enable LiveDashboard in development
