@@ -9,7 +9,8 @@ defmodule AcmeBankWeb.Router do
     pipe_through :api
 
     get "/welcome", WelcomeController, :index
-    resources "/users", UsersController, only: [:create, :delete, :index, :show, :update]
+    post "/accounts", AccountsController, :create
+    resources "/users", UsersController, only: [:create, :delete, :show, :update]
   end
 
   # Enable LiveDashboard in development

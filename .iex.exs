@@ -1,5 +1,6 @@
-alias AcmeBank.Users.User
+alias AcmeBank.Accounts.Create, as: CreateAccount
 alias AcmeBank.Repo
+alias AcmeBank.Users.User
 alias AcmeBank.Users.Create
 alias AcmeBank.ViaCep.Client
 

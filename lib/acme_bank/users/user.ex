@@ -1,6 +1,7 @@
 defmodule AcmeBank.Users.User do
   use Ecto.Schema
   import Ecto.Changeset
+  alias AcmeBank.Accounts.Account
   alias Ecto.Changeset
 
   @fields [:name, :password, :email, :cep]
@@ -14,6 +15,7 @@ defmodule AcmeBank.Users.User do
     field :password_hash, :string
     field :email, :string
     field :cep, :string
+    has_one :account, Account
 
     timestamps()
   end
